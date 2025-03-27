@@ -1,8 +1,9 @@
 let expreess = require('express');
-const userRouter = require('./routes/UserRouter');
+const userRouter = require('./routes/userRouter');
 const adminRouter = require('./routes/adminRouter');
 const productRouter = require('./routes/productRouter');
 const orderRouter = require('./routes/orderRouter');
+// const userRouter = require('./routes/UserRouter');
 let router = expreess.Router();
 
 router.use('/user',userRouter);
