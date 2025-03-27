@@ -1,0 +1,1 @@
+exports.frontendBaseUrl = 'http://localhost:3000';
