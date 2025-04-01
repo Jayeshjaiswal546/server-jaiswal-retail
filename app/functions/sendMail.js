@@ -9,7 +9,7 @@ exports.sendOtp = async (res, user) => {
     try {
         const generatedOTP = otpGenerator.generate(6, { upperCaseAlphabets: false, specialChars: false, lowerCaseAlphabets: false });
 
-        let result = await userModel.updateOne({ email: user }, { otp: generatedOTP, otp_created_at: new Date() });
+        let result = await userModel.findOneAndUpdate({ email: user }, { otp: generatedOTP, otp_created_at: new Date() },{ new: true });
         console.log(result);
 
 
@@ -19,7 +19,8 @@ exports.sendOtp = async (res, user) => {
             subject: "Your One-Time Password (OTP) for Secure Login", // Subject line
             text: "Your OTP is: 999999",
             html: `<div>
-            <p>Hello Jayesh,</p>
+
+            <p>Hello ${result.name.trim().split(' ')[0]},</p>
     <p>Your One-Time Password (OTP) for login is:</p>
     <h2>${generatedOTP}</h2>
     
